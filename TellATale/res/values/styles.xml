@@ -1,0 +1,121 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="Theme.Sherlock.Light">
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
+    </style>
+
+    
+     <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
+        <item name="background">@drawable/action_bar_bg</item>
+        <item name="android:background">@drawable/action_bar_bg</item>
+        
+        <item name="backgroundSplit">@drawable/action_bar_splitline</item>
+        <item name="android:backgroundSplit">@drawable/action_bar_splitline</item>
+    </style>
+    
+     
+    <style name="sectionShadow">
+        <item name="android:background">@drawable/shadow</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">8.0dip</item>
+        <item name="android:layout_marginLeft">@dimen/tale_margin</item>
+        <item name="android:layout_marginRight">@dimen/tale_margin</item>
+    </style>
+
+    <style name="welcome_headline_text" parent="@style/shadow_down">
+        <item name="android:textSize">40.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/welcome_catchphrase</item>
+        <item name="android:shadowColor">@color/welcome_catchphrase_shadow</item>
+        <item name="android:shadowDx">1.0</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">0.1</item>
+    </style>
+
+    <style name="base_story_text">
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+    </style>
+
+    <style name="tale_default_edittext">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">#ff4d4d4d</item>
+        <item name="android:textColorHint">@color/default_field_hint</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/default_input_selector</item>
+        <item name="android:paddingLeft">10.0dip</item>
+        <item name="android:paddingTop">0.0dip</item>
+        <item name="android:paddingRight">10.0dip</item>
+        <item name="android:paddingBottom">0.0dip</item>
+        <item name="android:layout_height">38.0sp</item>
+        <item name="android:minHeight">38.0dip</item>
+    </style>
+    
+        <style name="tale_default_text">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">#ff4d4d4d</item>
+        <item name="android:textColorHint">@color/default_field_hint</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="story_date_text" parent="@style/base_story_text">
+        <item name="android:textSize">@dimen/tail_date_font_size</item>
+        <item name="android:layout_marginTop">@dimen/tail_margin_half</item>
+        <item name="android:textColor">@color/tail_grey</item>
+    </style>
+
+    <style name="story_text" parent="@style/base_story_text">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/tail_story_font_size</item>
+        <item name="android:layout_margin">@dimen/tail_margin_half</item>
+        <item name="android:textColor">@color/tail_grey</item>
+    </style>
+
+    <style name="tail_user_text" parent="@style/base_story_text">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/tail_user_size</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="tail_place_text" parent="@style/base_story_text">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/tail_user_size</item>
+        <item name="android:paddingLeft">32.0dip</item>
+        <item name="android:textColor">@color/tail_grey</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:drawablePadding">2dip</item>
+    </style>
+
+    <style name="button_base" parent="@style/shadow_down">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">44.0dip</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowRadius">0.1</item>
+    </style>
+
+    <style name="default_button" parent="@style/button_base">
+        <item name="android:textColor">@color/welcome_button_login_text</item>
+        <item name="android:background">@drawable/light_square_button_background</item>
+        <item name="android:shadowColor">@color/welcome_button_login_text_shadow</item>
+    </style>
+
+    <style name="welcome_button_login" parent="@style/button_base">
+        <item name="android:textColor">@color/welcome_button_login_text</item>
+        <item name="android:background">@drawable/dark_square_button_background</item>
+        <item name="android:shadowColor">@color/welcome_button_login_text_shadow</item>
+    </style>
+
+    <style name="button_tan" parent="@style/button_base">
+       <item name="android:textColor">@color/welcome_button_login_text</item>
+        <item name="android:background">@drawable/dark_square_button_background</item>
+        <item name="android:shadowColor">@color/welcome_button_login_text_shadow</item>
+    </style>
+
+</resources>

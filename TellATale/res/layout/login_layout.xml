@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg" >
+
+    <EditText
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip" />
+
+    <!-- <ImageView -->
+    <!-- android:id="@id/login_action_bar" -->
+    <!-- android:layout_width="fill_parent" -->
+    <!-- android:layout_height="@dimen/actionbar_height" -->
+    <!-- android:background="@drawable/actionbar_base" -->
+    <!-- android:scaleType="center" -->
+    <!-- android:src="@drawable/actionbar_logo" /> -->
+
+    <View
+        android:id="@+id/login_box"
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip"
+        android:layout_alignBottom="@+id/keep_logged"
+        android:layout_alignLeft="@+id/username"
+        android:layout_alignRight="@+id/username"
+        android:layout_alignTop="@+id/username"
+        android:layout_marginBottom="-16.0dip"
+        android:layout_marginLeft="-16.0dip"
+        android:layout_marginRight="-16.0dip"
+        android:layout_marginTop="-6.0dip"
+        android:background="@drawable/login_layer" />
+
+    <EditText
+        android:id="@+id/username"
+        style="@style/tale_default_edittext"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/login_action_bar"
+        android:layout_marginLeft="32.0dip"
+        android:layout_marginRight="32.0dip"
+        android:layout_marginTop="22.0dip"
+        android:hint="@string/sign_in_hint_username"
+        android:inputType="textNoSuggestions"
+        android:imeOptions="actionNext" />
+
+    <EditText
+        android:id="@+id/password"
+        style="@style/tale_default_edittext"
+        android:layout_width="fill_parent"
+        android:layout_alignLeft="@+id/username"
+        android:layout_alignRight="@+id/username"
+        android:layout_below="@id/username"
+        android:layout_marginTop="10.0dip"
+        android:hint="@string/sign_in_hint_password"
+        android:imeOptions="actionGo"
+        android:inputType="textPassword" />
+
+    <CheckBox
+        android:id="@+id/keep_logged"
+        style="@style/tale_default_text"
+        android:layout_width="fill_parent"
+        android:layout_height="38.0sp"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignRight="@+id/password"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="10.0dip"
+        android:checked="true"
+        android:text="@string/lbl_stay_signed_in" />
+
+    <Button
+        android:id="@+id/login_next_button"
+        style="@style/default_button"
+        android:layout_width="0.0dip"
+        android:layout_alignLeft="@+id/login_box"
+        android:layout_alignRight="@+id/login_box"
+        android:layout_below="@id/login_box"
+        android:layout_marginTop="22.0dip"
+        android:text="@string/sign_in_title_button" />
+
+    <Button
+        android:id="@+id/password_forgot_button"
+        style="@style/button_tan"
+        android:layout_width="0.0dip"
+        android:layout_alignLeft="@+id/login_box"
+        android:layout_alignRight="@+id/login_box"
+        android:layout_below="@+id/login_next_button"
+        android:layout_marginTop="6.0dip"
+        android:text="@string/sign_in_forgot_password_button" />
+
+</RelativeLayout>

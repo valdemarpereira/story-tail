@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_marginLeft="@dimen/tail_margin"
+        android:layout_marginRight="@dimen/tail_margin"
+        android:layout_marginTop="@dimen/tail_margin_half"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/tail_margin"
+            android:paddingLeft="@dimen/tail_margin"
+            android:paddingRight="@dimen/tail_margin"
+            android:paddingTop="@dimen/tail_margin" >
+
+            <com.google.android.maps.MapView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/mapview"
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:background="@color/tail_grey_50"
+                android:apiKey="05rHt-Q9iO9kuKge-C52yVIC8t-3A0epqm9sHbw" />
+
+            <TextView
+                android:id="@+id/num_tales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tail_margin_half"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:text="TXT 2"
+                android:textColor="@color/tail_grey"
+                android:textSize="@dimen/tail_user_size" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        style="@style/sectionShadow"
+        android:layout_marginBottom="@dimen/tail_margin_half" />
+
+</LinearLayout>

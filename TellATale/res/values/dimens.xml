@@ -1,0 +1,55 @@
+<resources>
+
+    <dimen name="tail_story_font_size">20.0sp</dimen>
+    <dimen name="tail_date_font_size">12.0sp</dimen>
+    <dimen name="tail_margin_half">4.0dip</dimen>
+    <dimen name="tail_margin">8.0dip</dimen>
+    <dimen name="tail_user_size">12.0dip</dimen>
+    <dimen name="tail_tale_size">16.0dip</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="tale_margin">8.0dip</dimen>
+        <dimen name="tool_tip_rounded_corners_radius">8.0dip</dimen>
+    
+    
+    
+    <dimen name="abs__config_prefDialogWidth">320.0dip</dimen>
+    <dimen name="abs__action_bar_default_height">48.0dip</dimen>
+    <dimen name="abs__action_bar_icon_vertical_padding">8.0dip</dimen>
+    <dimen name="abs__action_bar_title_text_size">18.0dip</dimen>
+    <dimen name="abs__action_bar_subtitle_text_size">14.0dip</dimen>
+    <dimen name="abs__action_bar_subtitle_top_margin">-3.0dip</dimen>
+    <dimen name="abs__action_bar_subtitle_bottom_margin">5.0dip</dimen>
+    <dimen name="abs__action_button_min_width">56.0dip</dimen>
+    <dimen name="abs__alert_dialog_title_height">64.0dip</dimen>
+
+    <item name="abs__dialog_min_width_major" type="dimen">65.0%</item>
+    <item name="abs__dialog_min_width_minor" type="dimen">94.99999%</item>
+
+    <dimen name="actionbar_button_width">44.0dip</dimen>
+    <dimen name="title_text_size">16.0dip</dimen>
+    <dimen name="auto_complete_action_view_preferred_width">320.0dip</dimen>
+    <dimen name="bubble_text_max_width">216.0dip</dimen>
+    <dimen name="thumbnail_margin">9.0dip</dimen>
+    <dimen name="meal_margin">8.0dip</dimen>
+    <dimen name="meal_margin_2x">24.0dip</dimen>
+    <dimen name="photo_gallery_dots_height">26.0dip</dimen>
+    <dimen name="meal_list_group_font_size">14.0dip</dimen>
+    <dimen name="meal_list_title_font_size">16.0dip</dimen>
+    <dimen name="meal_list_date_font_size">12.0dip</dimen>
+    <dimen name="meal_list_place_font_size">12.0dip</dimen>
+    <dimen name="meal_list_photo_height">90.0dip</dimen>
+    <dimen name="meal_page_photo_list_size">78.0dip</dimen>
+    <dimen name="meal_map_height">114.0dip</dimen>
+    <dimen name="meal_header_text_size">16.0dip</dimen>
+    <dimen name="tutorial_width">288.0dip</dimen>
+    <dimen name="tutorial_title">14.0sp</dimen>
+    <dimen name="tutorial_msg">12.0sp</dimen>
+    <dimen name="tutorial_bottom_padding">14.0dip</dimen>
+    <dimen name="tutorial_arrow_margin_top">100.0dip</dimen>
+    <dimen name="tutorial_arrow_margin_bottom">46.0dip</dimen>
+    <dimen name="tutorial_bottom_extra_padding_top">0.0dip</dimen>
+    <dimen name="tutorial_bottom_extra_padding_bottom">0.0dip</dimen>
+
+</resources>

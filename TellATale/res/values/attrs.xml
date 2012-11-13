@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <declare-styleable name="SeekBarWithTextBox">
+        <attr name="seekbar_title" format="string" />
+        <attr name="seekbar_max" format="integer" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:seekBarWithTextBox="http://schemas.android.com/apk/res/com.valdemar.tellatale"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/tail_margin"
+        android:layout_marginRight="@dimen/tail_margin"
+        android:layout_marginTop="@dimen/tail_margin_half"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/tail_margin"
+            android:paddingRight="@dimen/tail_margin"
+            android:paddingTop="@dimen/tail_margin" >
+
+            <!-- <com.google.android.maps.MapView -->
+            <!-- android:id="@+id/mapview" -->
+            <!-- android:layout_width="fill_parent" -->
+            <!-- android:layout_height="100dip" -->
+            <!-- android:layout_gravity="center" -->
+            <!-- android:apiKey="05rHt-Q9iO9kuKge-C52yVIC8t-3A0epqm9sHbw" -->
+            <!-- android:background="@color/tail_grey_50" -->
+            <!-- android:clickable="false" -->
+            <!-- android:focusable="false" -->
+            <!-- android:focusableInTouchMode="false" /> -->
+
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tail_margin_half"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="@string/lbl_tale_title_hint"
+                android:inputType="textNoSuggestions"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/tail_grey"
+                android:textSize="@dimen/tail_user_size" />
+
+            <com.valdemar.tellatale.widget.LinedEditText
+                android:id="@+id/story"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tail_margin_half"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="top|left"
+                android:hint="@string/lbl_tale_story_hint"
+                android:lines="15"
+                android:maxLength="500"
+                android:textColor="@color/tail_grey"
+                android:textSize="@dimen/tail_tale_size" />
+
+            <com.valdemar.tellatale.widget.SeekBarWithTextBox
+                android:id="@+id/seekbar_maxdays"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                seekBarWithTextBox:seekbar_max="18"
+                seekBarWithTextBox:seekbar_title="@string/lbl_max_days_tale_travel" />
+
+            <com.valdemar.tellatale.widget.SeekBarWithTextBox
+                android:id="@+id/seekbar_max_interactions"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                seekBarWithTextBox:seekbar_max="99"
+                seekBarWithTextBox:seekbar_title="@string/lbl_max_interactions" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="wind_speed" />
+
+            <Button
+                android:id="@+id/add_tale"
+                style="@style/default_button"
+                android:layout_width="fill_parent"
+                android:layout_marginBottom="22.0dip"
+                android:layout_marginTop="22.0dip"
+                android:text="@string/register_button" />
+        </LinearLayout>
+
+        <ImageView
+            style="@style/sectionShadow"
+            android:layout_marginBottom="@dimen/tail_margin_half" />
+    </LinearLayout>
+
+</ScrollView>

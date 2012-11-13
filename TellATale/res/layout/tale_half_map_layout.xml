@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/meal_margin"
+        android:layout_marginRight="@dimen/meal_margin"
+        android:paddingTop="@dimen/tail_margin_half" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/meal_margin"
+            android:paddingLeft="@dimen/meal_margin"
+            android:paddingRight="@dimen/meal_margin"
+            android:paddingTop="@dimen/meal_margin" >
+
+            <LinearLayout
+                android:id="@id/meal_list_element_photos"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#ffa500"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:orientation="vertical" >
+
+                <com.google.android.maps.MapView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/mapview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="110dip"
+                    android:layout_gravity="center"
+                    android:apiKey="05rHt-Q9iO9kuKge-C52yVIC8t-3A0epqm9sHbw"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false" />
+
+<!--                 <ImageView -->
+<!--                     android:id="@id/meal_list_element_photo1" -->
+<!--                     android:layout_width="wrap_content" -->
+<!--                     android:layout_height="wrap_content" -->
+<!--                     android:layout_gravity="center" -->
+<!--                     android:clickable="false" -->
+<!--                     android:focusable="false" -->
+<!--                     android:focusableInTouchMode="false" -->
+<!--                     android:src="@drawable/browser_placeholder" /> -->
+            </LinearLayout>
+
+            <TextView
+                android:id="@id/meal_list_element_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/tail_margin_half"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:text="TXT 2"
+                android:textColor="@color/food_orange"
+                android:textSize="@dimen/meal_list_title_font_size" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView style="@style/sectionShadow" />
+
+</LinearLayout>
