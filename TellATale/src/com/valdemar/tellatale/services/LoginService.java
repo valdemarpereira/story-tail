@@ -28,7 +28,7 @@ public final class LoginService {
 	public void doLogin(String username, String password) {
 
 		user = new User(username, password);
-		user.login(StackMobOptions.depthOf(2), new StackMobCallback() {
+		user.login(StackMobOptions.none(), new StackMobCallback() {
 
 			@Override
 			public void failure(StackMobException arg0) {

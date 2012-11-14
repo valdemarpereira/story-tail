@@ -1,6 +1,15 @@
 package com.valdemar.tellatale;
 
+import java.util.List;
+
+import com.stackmob.android.sdk.common.StackMobAndroid;
+import com.stackmob.sdk.api.StackMobOptions;
+import com.stackmob.sdk.api.StackMobQuery;
+import com.stackmob.sdk.callback.StackMobQueryCallback;
+import com.stackmob.sdk.exception.StackMobException;
 import com.valdemar.tellatale.common.TaleApplicationContext;
+import com.valdemar.tellatale.model.Dummy;
+import com.valdemar.tellatale.model.Tale;
 import com.valdemar.tellatale.services.LoginService;
 import com.valdemar.tellatale.services.LoginService.OnLoginListner;
 
@@ -18,6 +27,7 @@ public class NoRegistrationScreenActivity extends TaleBaseActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		hideActionBar();
 		setContentView(R.layout.no_registration_screen);
 
@@ -105,7 +115,6 @@ public class NoRegistrationScreenActivity extends TaleBaseActivity {
 			Intent intent = new Intent(getBaseContext(), SignUpActivity.class);
 			startActivity(intent);
 			finish();
-
 		}
 	};
 	
@@ -124,6 +133,28 @@ public class NoRegistrationScreenActivity extends TaleBaseActivity {
 
 		@Override
 		public void onClick(View v) {
+			
+			
+			Dummy dummy = new Dummy("Valdemar 101010");
+			
+			dummy.save(new StackMobOptions().withDepthOf(1));
+			
+			
+			Dummy.query(Dummy.class, new StackMobQuery().isInRange(0, 9), new StackMobQueryCallback<Dummy>() {
+			    @Override
+			    public void success(List<Dummy> result) {
+			       // You've now got a list of all tasks
+			    	
+			    	String xpto = "22";
+			    }
+			 
+			    @Override
+			    public void failure(StackMobException e) {
+			    	String xpto = "22";
+			    }
+			});
+			
+			
 			
 			
 			/*

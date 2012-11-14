@@ -31,6 +31,7 @@ import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
+import com.stackmob.sdk.api.StackMobQuery;
 import com.stackmob.sdk.callback.StackMobQueryCallback;
 import com.stackmob.sdk.exception.StackMobException;
 import com.valdemar.tellatale.map.CircleOverlay;
@@ -62,8 +63,7 @@ public class TalesActivity extends TaleBaseMapActivity {
 
 		setContentView(R.layout.tale_map_layout);
 
-		locationManager = (LocationManager) this
-				.getSystemService(Context.LOCATION_SERVICE);
+		locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 		mapView = (MapView) findViewById(R.id.mapview);
 		mapView.setBuiltInZoomControls(false);
 		numTails = (TextView) findViewById(R.id.num_tales);
@@ -82,9 +82,7 @@ public class TalesActivity extends TaleBaseMapActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
-		menu.add("Add").setOnMenuItemClickListener(addMenuItemClickListener)
-				.setIcon(R.drawable.icon_new)
-				.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		menu.add("Add").setOnMenuItemClickListener(addMenuItemClickListener).setIcon(R.drawable.icon_new).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
 		// menu.add("Search")
 		// .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
@@ -105,13 +103,10 @@ public class TalesActivity extends TaleBaseMapActivity {
 		public boolean onMenuItemClick(MenuItem item) {
 
 			if (current_location == null) {
-				Toast.makeText(getBaseContext(),
-						R.string.lbl_cannot_start_tail_no_location,
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(getBaseContext(), R.string.lbl_cannot_start_tail_no_location, Toast.LENGTH_SHORT).show();
 				return true;
 			}
-			Intent intent = new Intent(getBaseContext(),
-					StartTaleActivity.class);
+			Intent intent = new Intent(getBaseContext(), StartTaleActivity.class);
 			intent.putExtra(StartTaleActivity.LOCATION_KEY, current_location);
 			startActivity(intent);
 			return true;
@@ -123,12 +118,10 @@ public class TalesActivity extends TaleBaseMapActivity {
 		// I'm removing the location listener...
 		locationManager.removeUpdates(locationListener);
 
-		currentLocation = new LatLonPoint(location.getLatitude(),
-				location.getLongitude());
+		currentLocation = new LatLonPoint(location.getLatitude(), location.getLongitude());
 		mapView.getController().setCenter(currentLocation);
 
-		mapOverlays.add(new CircleOverlay(this, location.getLatitude(),
-				location.getLongitude(), 1500));
+		mapOverlays.add(new CircleOverlay(this, location.getLatitude(), location.getLongitude(), 1500));
 
 		getTales(currentLocation);
 
@@ -140,40 +133,32 @@ public class TalesActivity extends TaleBaseMapActivity {
 		boolean network_enabled = false;
 
 		try {
-			gps_enabled = locationManager
-					.isProviderEnabled(LocationManager.GPS_PROVIDER);
-		} catch (Exception ex) {
+			gps_enabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 		}
+		catch (Exception ex) {}
 		try {
-			network_enabled = locationManager
-					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-		} catch (Exception ex) {
+			network_enabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 		}
+		catch (Exception ex) {}
 
 		// don't start listeners if no provider is enabled
 		if (!gps_enabled && !network_enabled) {
-			Toast.makeText(
-					this,
-					"Sorry, location is not determined. To fix this please enable location providers",
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Sorry, location is not determined. To fix this please enable location providers", Toast.LENGTH_SHORT).show();
 		}
 
 		setSupportProgressBarIndeterminateVisibility(true);
 
 		if (gps_enabled) {
-			locationManager.requestLocationUpdates(
-					LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 		}
 		if (network_enabled) {
-			locationManager.requestLocationUpdates(
-					LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+			locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 		}
 
 	}
 
 	private void checkEnableGPS() {
-		String provider = Settings.Secure.getString(getContentResolver(),
-				Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+		String provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
 
 		if (provider.contains("gps")) {
 
@@ -183,29 +168,24 @@ public class TalesActivity extends TaleBaseMapActivity {
 		}
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(R.string.lbl_enable_gps)
-				.setCancelable(false)
-				.setPositiveButton(R.string.lbl_yes,
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int id) {
+		builder.setMessage(R.string.lbl_enable_gps).setCancelable(false).setPositiveButton(R.string.lbl_yes, new DialogInterface.OnClickListener() {
 
-								Intent gpsOptionsIntent = new Intent(
-										android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-								startActivityForResult(gpsOptionsIntent,
-										LOCATION_ACTION_REQUEST_CODE);
+			public void onClick(DialogInterface dialog, int id) {
 
-								dialog.dismiss();
+				Intent gpsOptionsIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+				startActivityForResult(gpsOptionsIntent, LOCATION_ACTION_REQUEST_CODE);
 
-							}
-						})
-				.setNegativeButton(R.string.lbl_no,
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int id) {
-								dialog.cancel();
+				dialog.dismiss();
 
-								getCurrentLocation();
-							}
-						});
+			}
+		}).setNegativeButton(R.string.lbl_no, new DialogInterface.OnClickListener() {
+
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.cancel();
+
+				getCurrentLocation();
+			}
+		});
 
 		AlertDialog alert = builder.create();
 		alert.show();
@@ -219,9 +199,8 @@ public class TalesActivity extends TaleBaseMapActivity {
 		setSupportProgressBarIndeterminateVisibility(true);
 
 		numTails.setText(R.string.lbl_loading_stories);
-		// TODO: VP Teste Refactor
 
-		Tale.query(Tale.class, null, new StackMobQueryCallback<Tale>() {
+		Tale.query(Tale.class, new StackMobQuery().isInRange(0, 9), new StackMobQueryCallback<Tale>() {
 
 			@Override
 			public void success(List<Tale> tales) {
@@ -239,40 +218,27 @@ public class TalesActivity extends TaleBaseMapActivity {
 					if (TextUtils.isEmpty(title))
 						title = "";
 
-					point = new LatLonPoint(tale.getCurrentcoord()
-							.getLatitude(), tale.getCurrentcoord()
-							.getLongitude());
-					StoryTailOverlayItem item = new StoryTailOverlayItem(
-							tale,
-							point,
-							"Story Tail",
-							title,
-							writeOnDrawable(R.drawable.points,
-									Long.toString(tale.getCurrentinteraction())));
+					point = new LatLonPoint(tale.getCurrentcoord().getLatitude(), tale.getCurrentcoord().getLongitude());
+					StoryTailOverlayItem item = new StoryTailOverlayItem(tale, point, "Story Tail", title, writeOnDrawable(R.drawable.points, Long.toString(tale.getCurrentinteraction())));
 					items.add(item);
-					Log.d("Tale", index + " - " + title + " ("
-							+ tale.getCurrentcoord().getLatitude() + ","
-							+ tale.getCurrentcoord().getLongitude() + ")");
+					Log.d("Tale", index + " - " + title + " (" + tale.getCurrentcoord().getLatitude() + "," + tale.getCurrentcoord().getLongitude() + ")");
 				}
 
-				StoryTailOverlayItem[] itemsArray = new StoryTailOverlayItem[items
-						.size()];
+				StoryTailOverlayItem[] itemsArray = new StoryTailOverlayItem[items.size()];
 				items.toArray(itemsArray);
 
-				StoryTailOverlay itemsOverlay = new StoryTailOverlay(
-						getBaseContext(), mapView, itemsArray, onTaleClickEvent);
+				StoryTailOverlay itemsOverlay = new StoryTailOverlay(getBaseContext(), mapView, itemsArray, onTaleClickEvent);
 
 				mapOverlays.add(itemsOverlay);
 
 				runOnUiThread(new Runnable() {
+
 					@Override
 					public void run() {
 						setSupportProgressBarIndeterminateVisibility(false);
 
 						// mProgressBar.setVisibility(View.GONE);
-						numTails.setText(getBaseContext().getResources()
-								.getString(R.string.lbl_stories_found,
-										talesSize));
+						numTails.setText(getBaseContext().getResources().getString(R.string.lbl_stories_found, talesSize));
 						mapView.invalidate();
 					}
 				});
@@ -282,6 +248,7 @@ public class TalesActivity extends TaleBaseMapActivity {
 			public void failure(StackMobException e) {
 
 				runOnUiThread(new Runnable() {
+
 					@Override
 					public void run() {
 						setSupportProgressBarIndeterminateVisibility(false);
@@ -292,75 +259,10 @@ public class TalesActivity extends TaleBaseMapActivity {
 			}
 		});
 
-		/*
-		 * Map<String, Object> arguments = new HashMap<String, Object>();
-		 * 
-		 * StackMob stackmob = StackMobCommon.getStackMobInstance();
-		 * stackmob.get("tale", new StackMobCallback() {
-		 * 
-		 * @Override public void success(String json) {
-		 * 
-		 * String title = null;
-		 * 
-		 * try { tales = GenericJsonUtil.INSTANCE.fromJsonString(json,
-		 * Tale[].class); } catch (JsonParseException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); } catch (IOException
-		 * e) { // TODO Auto-generated catch block e.printStackTrace(); }
-		 * 
-		 * List<Overlay> mapOverlays = mapView.getOverlays();
-		 * 
-		 * ArrayList<StoryTailOverlayItem> items = new
-		 * ArrayList<StoryTailOverlayItem>();
-		 * 
-		 * GeoPoint point;
-		 * 
-		 * int index = 1; for (Tale tale : tales) { title = tale.getTitle(); if
-		 * (TextUtils.isEmpty(title)) title = "";
-		 * 
-		 * point = new LatLonPoint(tale.getCurrentcoord().getLatitude(),
-		 * tale.getCurrentcoord().getLongitude()); StoryTailOverlayItem item =
-		 * new StoryTailOverlayItem(tale, point, "Story Tail", title,
-		 * writeOnDrawable(R.drawable.points,
-		 * Long.toString(tale.getCurrentinteraction()))); items.add(item);
-		 * Log.d("Tale", index + " - " + title + " (" +
-		 * tale.getCurrentcoord().getLatitude() + "," +
-		 * tale.getCurrentcoord().getLongitude() + ")"); }
-		 * 
-		 * StoryTailOverlayItem[] itemsArray = new
-		 * StoryTailOverlayItem[items.size()]; items.toArray(itemsArray);
-		 * 
-		 * StoryTailOverlay itemsOverlay = new
-		 * StoryTailOverlay(getBaseContext(), mapView, itemsArray,
-		 * onTaleClickEvent);
-		 * 
-		 * mapOverlays.add(itemsOverlay);
-		 * 
-		 * runOnUiThread(new Runnable() {
-		 * 
-		 * @Override public void run() {
-		 * setSupportProgressBarIndeterminateVisibility(false);
-		 * 
-		 * // mProgressBar.setVisibility(View.GONE);
-		 * numTails.setText(getBaseContext
-		 * ().getResources().getString(R.string.lbl_stories_found,
-		 * tales.length)); mapView.invalidate(); } });
-		 * 
-		 * }
-		 * 
-		 * @Override public void failure(StackMobException arg0) {
-		 * runOnUiThread(new Runnable() {
-		 * 
-		 * @Override public void run() {
-		 * setSupportProgressBarIndeterminateVisibility(false);
-		 * numTails.setText(R.string.lbl_error_finding_tales);
-		 * 
-		 * } });
-		 * 
-		 * } });
-		 */
 	}
 
 	OnItemClickEvent onTaleClickEvent = new OnItemClickEvent() {
+
 		@Override
 		public void OnClick(String taleId) {
 			Intent intent = new Intent(getBaseContext(), TaleListActivity.class);
@@ -371,8 +273,7 @@ public class TalesActivity extends TaleBaseMapActivity {
 
 	public BitmapDrawable writeOnDrawable(int drawableId, String text) {
 
-		Bitmap bm = BitmapFactory.decodeResource(getResources(), drawableId)
-				.copy(Bitmap.Config.ARGB_8888, true);
+		Bitmap bm = BitmapFactory.decodeResource(getResources(), drawableId).copy(Bitmap.Config.ARGB_8888, true);
 
 		Typeface tf = Typeface.create(Typeface.DEFAULT, Typeface.BOLD);
 		Paint paint = new Paint();
@@ -409,6 +310,7 @@ public class TalesActivity extends TaleBaseMapActivity {
 
 	// Define a listener that responds to location updates
 	LocationListener locationListener = new LocationListener() {
+
 		public void onLocationChanged(Location location) {
 			// Called when a new location is found by the network location
 			// provider.
@@ -419,25 +321,22 @@ public class TalesActivity extends TaleBaseMapActivity {
 			setCurrentLocation(location);
 		}
 
-		public void onStatusChanged(String provider, int status, Bundle extras) {
-		}
+		public void onStatusChanged(String provider, int status, Bundle extras) {}
 
-		public void onProviderEnabled(String provider) {
-		}
+		public void onProviderEnabled(String provider) {}
 
-		public void onProviderDisabled(String provider) {
-		}
+		public void onProviderDisabled(String provider) {}
 	};
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		switch (requestCode) {
-		case LOCATION_ACTION_REQUEST_CODE:
-			checkEnableGPS();
-			break;
+			case LOCATION_ACTION_REQUEST_CODE:
+				checkEnableGPS();
+				break;
 
-		default:
-			break;
+			default:
+				break;
 		}
 	};
 

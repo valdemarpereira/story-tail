@@ -41,7 +41,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="110dip"
                     android:layout_gravity="center"
-                    android:apiKey="05rHt-Q9iO9kuKge-C52yVIC8t-3A0epqm9sHbw"
+                    android:apiKey="0p9gwDwfWpow6ShrA5Ouq4q-a5o7FpUqHRXscyw"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false" />

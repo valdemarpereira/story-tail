@@ -34,7 +34,7 @@
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:background="@color/tail_grey_50"
-                android:apiKey="05rHt-Q9iO9kuKge-C52yVIC8t-3A0epqm9sHbw" />
+                android:apiKey="0p9gwDwfWpow6ShrA5Ouq4q-a5o7FpUqHRXscyw" />
 
             <TextView
                 android:id="@+id/num_tales"

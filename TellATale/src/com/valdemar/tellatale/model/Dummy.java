@@ -6,9 +6,6 @@ public class Dummy extends StackMobModel {
 
 	private String title;
 
-	public Dummy() {
-		super(Dummy.class);
-	}
 
 	public Dummy(String title) {
 		super(Dummy.class);
