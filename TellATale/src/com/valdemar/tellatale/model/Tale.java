@@ -1,5 +1,7 @@
 package com.valdemar.tellatale.model;
 
+import java.util.List;
+
 import com.stackmob.sdk.api.StackMobGeoPoint;
 import com.stackmob.sdk.model.StackMobModel;
 
@@ -16,26 +18,13 @@ public class Tale extends StackMobModel {
 	private long maxdays;
 	private long maxinteractions;
 	private String title;
+	private List<Tail> tails;
 
 	
-//	private String createduser;
-//	private String tale_id;
-//	private long lastmoddate;
-//	private long createddate;
-
 	public Tale() {
 
 		super(Tale.class);
-		// this.name = name;
 	}
-
-//	public String getCreateduser() {
-//		return createduser;
-//	}
-//
-//	public void setCreateduser(String createduser) {
-//		this.createduser = createduser;
-//	}
 
 	public StackMobGeoPoint getCurrentcoord() {
 		return currentcoord;
@@ -60,22 +49,6 @@ public class Tale extends StackMobModel {
 	public void setLocked(boolean locked) {
 		this.locked = locked;
 	}
-
-//	public String getTale_id() {
-//		return tale_id;
-//	}
-//
-//	public void setTale_id(String tale_id) {
-//		this.tale_id = tale_id;
-//	}
-//
-//	public long getLastmoddate() {
-//		return lastmoddate;
-//	}
-//
-//	public void setLastmoddate(long lastmoddate) {
-//		this.lastmoddate = lastmoddate;
-//	}
 
 	public long getMaxdays() {
 		return maxdays;
@@ -109,14 +82,6 @@ public class Tale extends StackMobModel {
 		this.currentinteraction = currentinteraction;
 	}
 
-//	public long getCreateddate() {
-//		return createddate;
-//	}
-//
-//	public void setCreateddate(long createddate) {
-//		this.createddate = createddate;
-//	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -147,6 +112,14 @@ public class Tale extends StackMobModel {
 
 	public void setLock_date_utc(long lock_date_utc) {
 		this.lock_date_utc = lock_date_utc;
+	}
+
+	public List<Tail> getTails() {
+		return tails;
+	}
+
+	public void setTails(List<Tail> tails) {
+		this.tails = tails;
 	}
 
 }

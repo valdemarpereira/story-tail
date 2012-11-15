@@ -1,8 +1,10 @@
 package com.valdemar.tellatale.services;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-import com.stackmob.sdk.api.StackMob;
+import com.stackmob.sdk.api.StackMobOptions;
 import com.stackmob.sdk.callback.StackMobCallback;
 import com.stackmob.sdk.exception.StackMobException;
 import com.valdemar.tellatale.model.Dummy;
@@ -37,9 +39,16 @@ public class StartTaleService {
 
 	public void doStartATale() {
 		
+		List<Tail> tailList = new ArrayList<Tail>();
+		tailList.add(tail);
+		tail.setTale(tale);
 		
-		Dummy dummy;
-		dummy = new Dummy("Teste 1 - Valdemar");
+		tale.setTails(tailList);
+		
+		tale.save(StackMobOptions.depthOf(1), addTaleStackMobCallback );
+		
+//		Dummy dummy;
+//		dummy = new Dummy("Teste 1 - Valdemar");
 //		dummy.save();
 
 		
@@ -68,9 +77,9 @@ public class StartTaleService {
 		}
 	};
 
-	private void addTheTail(Tail tail, String taleID) {
+	private void addTheTail(Tail tail, Tale tale) {
 		AddTailService addTaile = new AddTailService(onAddTailListner);
-		addTaile.doAddTail(tail, taleID);
+		addTaile.doAddTail(tail, tale);
 	}
 
 	OnAddTailListner onAddTailListner = new OnAddTailListner() {

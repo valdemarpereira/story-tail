@@ -4,7 +4,6 @@ import com.stackmob.sdk.api.StackMobGeoPoint;
 import com.valdemar.tellatale.model.GPSCoord;
 import com.valdemar.tellatale.model.Tail;
 import com.valdemar.tellatale.model.Tale;
-import com.valdemar.tellatale.services.AddTailService;
 import com.valdemar.tellatale.services.LoginService;
 import com.valdemar.tellatale.services.StartTaleService;
 import com.valdemar.tellatale.services.StartTaleService.OnStartTaleListner;
@@ -13,11 +12,9 @@ import com.valdemar.tellatale.widget.SeekBarWithTextBox.OnSeekBarWithTextBoxChan
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
-import android.graphics.LightingColorFilter;
 import android.location.Location;
 import android.os.Bundle;
 import android.text.Editable;
@@ -305,9 +302,9 @@ public class StartTaleActivity extends TaleBaseActivity {
 			} else if (progress <= 9) {
 				subTitle.setText(res.getQuantityString(R.plurals.lbl_add_tale_week, progress - 6, progress - 6));
 			} else {
-				subTitle.setText(res.getQuantityString(R.plurals.lbl_add_tale_month, progress - 9, progress - 9));
+					subTitle.setText(res.getQuantityString(R.plurals.lbl_add_tale_month, progress - 9, progress - 9));
 
-			}
+				}
 
 		}
 	};

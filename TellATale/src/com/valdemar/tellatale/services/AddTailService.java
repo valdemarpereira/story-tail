@@ -3,6 +3,7 @@ package com.valdemar.tellatale.services;
 import com.stackmob.sdk.callback.StackMobCallback;
 import com.stackmob.sdk.exception.StackMobException;
 import com.valdemar.tellatale.model.Tail;
+import com.valdemar.tellatale.model.Tale;
 
 public class AddTailService {
 
@@ -22,10 +23,10 @@ public class AddTailService {
 		setOnAddTailListner(onAddTailListner);
 	}
 
-	public void doAddTail(Tail tail, String taleID) {
+	public void doAddTail(Tail tail, Tale tale) {
 
 		//VP: Teste refactor
-		tail.setTale(taleID);
+		tail.setTale(tale);
 		tail.save(new StackMobCallback() {
 			
 			@Override
@@ -41,22 +42,6 @@ public class AddTailService {
 			}
 		});
 		
-		/*
-		StackMob stackMob = StackMobCommon.getStackMobInstance();
-
-		List<Tail> items = Arrays.asList(tail);
-		stackMob.postRelatedBulk("Tale", taleID, "tails", items, new StackMobCallback() {
-			@Override
-			public void success(String responseBody) {
-				onAddTailListner.onSuccess();
-			}
-
-			@Override
-			public void failure(StackMobException e) {
-				onAddTailListner.onFailure();
-			}
-		});
-		*/
 		
 	}
 

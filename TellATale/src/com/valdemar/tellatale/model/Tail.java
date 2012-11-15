@@ -26,7 +26,7 @@ public class Tail  extends StackMobModel
 	private GPSCoord coord;
 	private String story;
 	private Long createddate;
-	private String tale;
+	private Tale tale;
 
 	public Tail()
 	{
@@ -113,12 +113,12 @@ public class Tail  extends StackMobModel
 		this.createddate = createddate;
 	}
 
-	public String getTale()
+	public Tale getTale()
 	{
 		return tale;
 	}
 
-	public void setTale(String tale)
+	public void setTale(Tale tale)
 	{
 		this.tale = tale;
 	}
