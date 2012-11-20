@@ -1,22 +1,14 @@
 package com.valdemar.tellatale.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.stackmob.sdk.model.StackMobUser;
 
 public class User extends StackMobUser {
 	private String email;
-	private List<Tale> tales;
-	public Dummy[] dummies; 
+	private List<Tale> tales = new ArrayList<Tale>();
 
-
-//	public TaleUser(String username, String password, String email) {
-//
-//		this(username, password);
-//		this.setEmail(email);
-//	}
-	
-	
 
 	public User(String username, String password) {
 
@@ -39,15 +31,5 @@ public class User extends StackMobUser {
 		this.tales = tales;
 	}
 
-	public Dummy[] getDummies() {
-		return dummies;
-	}
-
-	public void setDummies(Dummy[] dummies) {
-		this.dummies = dummies;
-	}
-	
-	
-	
 	
 }

@@ -1,15 +1,6 @@
 package com.valdemar.tellatale;
 
-import java.util.List;
-
-import com.stackmob.android.sdk.common.StackMobAndroid;
-import com.stackmob.sdk.api.StackMobOptions;
-import com.stackmob.sdk.api.StackMobQuery;
-import com.stackmob.sdk.callback.StackMobQueryCallback;
-import com.stackmob.sdk.exception.StackMobException;
 import com.valdemar.tellatale.common.TaleApplicationContext;
-import com.valdemar.tellatale.model.Dummy;
-import com.valdemar.tellatale.model.Tale;
 import com.valdemar.tellatale.services.LoginService;
 import com.valdemar.tellatale.services.LoginService.OnLoginListner;
 
@@ -133,7 +124,7 @@ public class NoRegistrationScreenActivity extends TaleBaseActivity {
 
 		@Override
 		public void onClick(View v) {
-			
+			/*
 			
 			Dummy dummy = new Dummy("Valdemar 101010");
 			
@@ -155,7 +146,7 @@ public class NoRegistrationScreenActivity extends TaleBaseActivity {
 			});
 			
 			
-			
+			*/
 			
 			/*
 			

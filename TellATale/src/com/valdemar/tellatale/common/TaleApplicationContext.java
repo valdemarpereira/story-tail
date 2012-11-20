@@ -1,6 +1,7 @@
 package com.valdemar.tellatale.common;
 
 import com.stackmob.android.sdk.common.StackMobAndroid;
+import com.stackmob.sdk.api.StackMob;
 
 import android.app.Application;
 import android.content.Context;
@@ -29,6 +30,7 @@ public class TaleApplicationContext extends Application {
 		StackMobAndroid.init(getApplicationContext(), 0,
 				API_KEY_DEV);
 
+		
 		angelina = Typeface.createFromAsset(getAssets(), "fonts/angelina.ttf");
 		handsean = Typeface.createFromAsset(getAssets(), "fonts/handsean.ttf");
 	}
@@ -93,6 +95,5 @@ public class TaleApplicationContext extends Application {
 		String arg2 = prefs.getString(ARG2_KEY, "");
 
 		return new Pair<String, String>(arg1, arg2);
-
 	}
 }

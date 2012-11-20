@@ -26,7 +26,6 @@ public class Tail  extends StackMobModel
 	private GPSCoord coord;
 	private String story;
 	private Long createddate;
-	private Tale tale;
 
 	public Tail()
 	{
@@ -111,16 +110,6 @@ public class Tail  extends StackMobModel
 	public void setCreateddate(Long createddate)
 	{
 		this.createddate = createddate;
-	}
-
-	public Tale getTale()
-	{
-		return tale;
-	}
-
-	public void setTale(Tale tale)
-	{
-		this.tale = tale;
 	}
 
 	public String getFormatedDate()

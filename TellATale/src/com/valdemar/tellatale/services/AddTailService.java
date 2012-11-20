@@ -26,7 +26,6 @@ public class AddTailService {
 	public void doAddTail(Tail tail, Tale tale) {
 
 		//VP: Teste refactor
-		tail.setTale(tale);
 		tail.save(new StackMobCallback() {
 			
 			@Override

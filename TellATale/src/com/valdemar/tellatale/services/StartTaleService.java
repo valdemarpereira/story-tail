@@ -1,13 +1,11 @@
 package com.valdemar.tellatale.services;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.stackmob.sdk.api.StackMobOptions;
 import com.stackmob.sdk.callback.StackMobCallback;
 import com.stackmob.sdk.exception.StackMobException;
-import com.valdemar.tellatale.model.Dummy;
 import com.valdemar.tellatale.model.Tail;
 import com.valdemar.tellatale.model.Tale;
 import com.valdemar.tellatale.services.AddTailService.OnAddTailListner;
@@ -41,23 +39,11 @@ public class StartTaleService {
 		
 		List<Tail> tailList = new ArrayList<Tail>();
 		tailList.add(tail);
-		tail.setTale(tale);
 		
 		tale.setTails(tailList);
 		
 		tale.save(StackMobOptions.depthOf(1), addTaleStackMobCallback );
 		
-//		Dummy dummy;
-//		dummy = new Dummy("Teste 1 - Valdemar");
-//		dummy.save();
-
-		
-		
-		
-		//TODO: Comentei...
-//		StackMob stackmob = StackMobCommon.getStackMobInstance();
-//
-//		stackmob.postRelatedBulk("user", "jonh", "dummies", Arrays.asList(dummy), addTaleStackMobCallback);
 	}
 
 	StackMobCallback addTaleStackMobCallback = new StackMobCallback() {
