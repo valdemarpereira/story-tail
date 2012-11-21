@@ -1,8 +1,10 @@
 package com.valdemar.tellatale;
 
+import android.app.Service;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -13,6 +15,8 @@ import com.actionbarsherlock.view.Window;
 import com.valdemar.tellatale.common.TaleApplicationContext;
 
 public class TaleBaseActivity  extends SherlockActivity {
+
+	private InputMethodManager imm; 
 
 	private LinearLayout baseLayout;
 	private View loadingFrame;
@@ -26,6 +30,8 @@ public class TaleBaseActivity  extends SherlockActivity {
 		
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
+		imm = (InputMethodManager)this.getSystemService(Service.INPUT_METHOD_SERVICE);
+
 		mAppContext = (TaleApplicationContext) getApplicationContext();
 		
 		super.setContentView(R.layout.base_activity_layout);
@@ -36,6 +42,11 @@ public class TaleBaseActivity  extends SherlockActivity {
 		
 	}
 
+	
+	protected void hideSoftKeyboard(View v) {
+		 imm.hideSoftInputFromWindow(v.getWindowToken(), 0); 
+
+	}
 	
 	@Override
 	public void setContentView(int layoutResID)

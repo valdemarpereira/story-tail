@@ -13,8 +13,9 @@ import android.util.Pair;
 
 public class TaleApplicationContext extends Application {
 
+
 	private static final String API_KEY_DEV = "2bff1eb8-40ed-4dc7-84be-cd26f78b0ef2";
-	private static final String API_KEY_PROD = "d57495eb-5dcb-41a4-8092-d8765a282f2d";
+	//private static final String API_KEY_PROD = "d57495eb-5dcb-41a4-8092-d8765a282f2d";
 
 	private static final String MY_PREFS_FILE_NAME = "TalePrefFile";
 	private static final String ARG1_KEY = "arg1";
@@ -30,7 +31,8 @@ public class TaleApplicationContext extends Application {
 		StackMobAndroid.init(getApplicationContext(), 0,
 				API_KEY_DEV);
 
-		
+		StackMob.getStackMob().getSession().getLogger().setLogging(true); 
+
 		angelina = Typeface.createFromAsset(getAssets(), "fonts/angelina.ttf");
 		handsean = Typeface.createFromAsset(getAssets(), "fonts/handsean.ttf");
 	}

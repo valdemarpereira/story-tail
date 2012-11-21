@@ -31,6 +31,8 @@ import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
+import com.stackmob.sdk.api.StackMobGeoPoint;
+import com.stackmob.sdk.api.StackMobOptions;
 import com.stackmob.sdk.api.StackMobQuery;
 import com.stackmob.sdk.callback.StackMobQueryCallback;
 import com.stackmob.sdk.exception.StackMobException;
@@ -46,6 +48,7 @@ import com.valdemar.tellatale.util.StringUtils;
 public class TalesActivity extends TaleBaseMapActivity {
 
 	protected static final int LOCATION_ACTION_REQUEST_CODE = 3;
+	private static final float RADIUS = 1500;
 	private Location current_location = null;
 
 	// Acquire a reference to the system Location Manager
@@ -121,9 +124,9 @@ public class TalesActivity extends TaleBaseMapActivity {
 		currentLocation = new LatLonPoint(location.getLatitude(), location.getLongitude());
 		mapView.getController().setCenter(currentLocation);
 
-		mapOverlays.add(new CircleOverlay(this, location.getLatitude(), location.getLongitude(), 1500));
+		mapOverlays.add(new CircleOverlay(this, location.getLatitude(), location.getLongitude(), RADIUS));
 
-		getTales(currentLocation);
+		getTales(location);
 
 	}
 
@@ -161,9 +164,7 @@ public class TalesActivity extends TaleBaseMapActivity {
 		String provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
 
 		if (provider.contains("gps")) {
-
 			getCurrentLocation();
-
 			return; // the GPS is already in the requested state
 		}
 
@@ -194,13 +195,17 @@ public class TalesActivity extends TaleBaseMapActivity {
 
 	}
 
-	private void getTales(LatLonPoint currentLocation) {
+	private void getTales(Location location) {
 
 		setSupportProgressBarIndeterminateVisibility(true);
 
 		numTails.setText(R.string.lbl_loading_stories);
 
-		Tale.query(Tale.class, new StackMobQuery().isInRange(0, 9), new StackMobQueryCallback<Tale>() {
+		StackMobGeoPoint sf = new StackMobGeoPoint(location.getLongitude(), location.getLatitude());
+		StackMobQuery q = new StackMobQuery().fieldIsNearWithinKm(Tale.CURRENTCOORD_FIELD_NAME, sf, (double)RADIUS / 1000); //(lon, lat), distance (miles)
+		Tale.query(Tale.class, q, new StackMobQueryCallback<Tale>() {
+		
+		//Tale.query(Tale.class, new StackMobQuery(), StackMobOptions.depthOf(1), new StackMobQueryCallback<Tale>() {
 
 			@Override
 			public void success(List<Tale> tales) {
@@ -219,7 +224,7 @@ public class TalesActivity extends TaleBaseMapActivity {
 						title = "";
 
 					point = new LatLonPoint(tale.getCurrentcoord().getLatitude(), tale.getCurrentcoord().getLongitude());
-					StoryTailOverlayItem item = new StoryTailOverlayItem(tale, point, "Story Tail", title, writeOnDrawable(R.drawable.points, Long.toString(tale.getCurrentinteraction())));
+					StoryTailOverlayItem item = new StoryTailOverlayItem(tale, point, "Story Tail", title, writeOnDrawable(R.drawable.points, Long.toString(tale.getTails().size())));
 					items.add(item);
 					Log.d("Tale", index + " - " + title + " (" + tale.getCurrentcoord().getLatitude() + "," + tale.getCurrentcoord().getLongitude() + ")");
 				}
@@ -238,7 +243,7 @@ public class TalesActivity extends TaleBaseMapActivity {
 						setSupportProgressBarIndeterminateVisibility(false);
 
 						// mProgressBar.setVisibility(View.GONE);
-						numTails.setText(getBaseContext().getResources().getString(R.string.lbl_stories_found, talesSize));
+						numTails.setText(getBaseContext().getResources().getQuantityString(R.plurals.lbl_stories_found, talesSize, talesSize));
 						mapView.invalidate();
 					}
 				});
@@ -258,7 +263,6 @@ public class TalesActivity extends TaleBaseMapActivity {
 				});
 			}
 		});
-
 	}
 
 	OnItemClickEvent onTaleClickEvent = new OnItemClickEvent() {

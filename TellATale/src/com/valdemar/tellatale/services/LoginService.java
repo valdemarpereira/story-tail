@@ -1,6 +1,5 @@
 package com.valdemar.tellatale.services;
 
-import com.stackmob.sdk.api.StackMob;
 import com.stackmob.sdk.api.StackMobOptions;
 import com.stackmob.sdk.callback.StackMobCallback;
 import com.stackmob.sdk.exception.StackMobException;
@@ -38,9 +37,6 @@ public final class LoginService {
 
 			@Override
 			public void success(String arg0) {
-				
-				StackMob.getStackMob().getSession().getLogger().setLogging(true); 
-
 				onLoginListner.onSuccess();
 			}
 

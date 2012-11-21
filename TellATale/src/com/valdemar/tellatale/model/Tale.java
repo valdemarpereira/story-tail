@@ -1,11 +1,14 @@
 package com.valdemar.tellatale.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.stackmob.sdk.api.StackMobGeoPoint;
 import com.stackmob.sdk.model.StackMobModel;
 
 public class Tale extends StackMobModel {
+	
+	public static final String CURRENTCOORD_FIELD_NAME = "currentcoord";
 	
 	private StackMobGeoPoint currentcoord;
 	private boolean locked;
@@ -24,6 +27,7 @@ public class Tale extends StackMobModel {
 	public Tale() {
 
 		super(Tale.class);
+		tails = new ArrayList<Tail>();
 	}
 
 	public StackMobGeoPoint getCurrentcoord() {

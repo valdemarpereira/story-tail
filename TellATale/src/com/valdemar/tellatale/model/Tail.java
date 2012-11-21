@@ -14,7 +14,6 @@ import android.location.Geocoder;
 
 public class Tail  extends StackMobModel
 {
-
 	public static final String OBJECT_NAME = "tail";
 	public static final String FIELD_TALE = "tale";
 

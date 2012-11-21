@@ -53,6 +53,19 @@ public class CircleOverlay extends Overlay {
 				innerCirclePaint);
 		
 		
+		Paint borderCirclePaint;
+
+		borderCirclePaint = new Paint();
+		borderCirclePaint.setColor(Color.BLUE);
+		borderCirclePaint.setAntiAlias(true);
+		borderCirclePaint.setAlpha(124);
+		borderCirclePaint.setStyle(Paint.Style.STROKE);
+		borderCirclePaint.setStrokeWidth(3f);
+		
+		canvas.drawCircle((float) pt.x, (float) pt.y, circleRadius,
+			borderCirclePaint);
+		
+		
 		Paint pointPaint = new Paint();
 		pointPaint.setColor(Color.BLACK);
 		//pointPaint.setAlpha(25);
@@ -60,8 +73,7 @@ public class CircleOverlay extends Overlay {
 
 		pointPaint.setStyle(Paint.Style.FILL);
 		canvas.drawCircle((float) pt.x, (float) pt.y, 3, pointPaint);
-		// TODO: Draw a point
-		// TODO: Draw a circle stroke
+		
 	}
 
 	public static int metersToRadius(float meters, MapView map, double latitude) {
