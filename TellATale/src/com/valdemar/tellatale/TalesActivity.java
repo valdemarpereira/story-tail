@@ -48,7 +48,7 @@ import com.valdemar.tellatale.util.StringUtils;
 public class TalesActivity extends TaleBaseMapActivity {
 
 	protected static final int LOCATION_ACTION_REQUEST_CODE = 3;
-	private static final float RADIUS = 1500;
+	private static final float RADIUS = 15000;
 	private Location current_location = null;
 
 	// Acquire a reference to the system Location Manager
